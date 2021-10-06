@@ -1,83 +1,66 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Text, View, StyleSheet, ImageBackground} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.PageContainer}>
+      <View style={styles.card}>
+        <ImageBackground
+          source={{
+            uri: 'https://images.unsplash.com/photo-1633477240406-706aef553993?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
+          }}
+          style={styles.image}>
+          <View style={styles.cardInner}>
+            <Text style={styles.name}>Elon Must</Text>
+            <Text style={styles.bio}>
+              A dude with a rocket is looking for a gal with fuel
+            </Text>
+          </View>
+        </ImageBackground>
+      </View>
     </View>
   );
 };
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Text style={styles.bigText}>Hello world hello</Text>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
-  container: {
+  PageContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  bigText: {
-    fontSize: 20,
+  card: {
+    width: '90%',
+    height: '70%',
+    backgroundColor: 'red',
+    borderRadius: 10,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.36,
+    shadowRadius: 6.68,
+    elevation: 11,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+  },
+  name: {
+    fontSize: 30,
+    color: '#fff',
     fontWeight: 'bold',
-    color: 'red',
+  },
+  bio: {
+    fontSize: 18,
+    color: '#fff',
+    lineHeight: 25,
+    fontWeight: 'normal',
+  },
+  cardInner: {
+    padding: 10,
   },
 });
-
 export default App;
