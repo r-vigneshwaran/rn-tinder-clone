@@ -4,9 +4,11 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen'
-import MatchesScreen from './src/screens/MatchesScreen'
-const App = () => {
+import Card from '../components/card/Card';
+import {data} from '../../assets/data/data';
+import AnimatedStack from '../components/AnimatedStack'
+
+const HomeScreen = () => {
   const onSwipeLeft=(user)=>{
     console.warn('Swiped Left',user.name)
   }
@@ -15,7 +17,12 @@ const App = () => {
   }
   return (
     <View style={styles.PageContainer}>
-      <MatchesScreen />
+      <AnimatedStack
+        data={data}
+        renderItems={({ item })=> <Card user={item}/>}
+        onSwipeLeft={onSwipeLeft}
+        onSwipeRight={onSwipeRight}
+        />
     </View>
   );
 };
@@ -24,6 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    width:'100%'
   },
 });
-export default App;
+export default HomeScreen;
